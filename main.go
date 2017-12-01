@@ -23,7 +23,7 @@ Examples:
 	terraform.Flags().StringP("profile", "p", "default", "Profile to use from the AWS shared credentials file")
 	terraform.BindFlags()
 
-	terraformTask := terraform.Task("hashicorp/terraform:0.9.5")
+	terraformTask := terraform.Task("hashicorp/terraform:0.11.1")
 	terraformTask.SetInitFunc(func(t *cali.Task, args []string) {
 		t.AddEnv("AWS_PROFILE", cli.FlagValues().GetString("profile"))
 	})
