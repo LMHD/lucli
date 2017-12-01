@@ -1,0 +1,7 @@
+# Vim scratch files
+*.swp
+
+# Binaries & hashes
+lucli*
+
+api_key
