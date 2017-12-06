@@ -12,6 +12,7 @@ func main() {
 	cli.SetLong("A nice long description of what your tool actually does")
 
 	cmd.TerraformCli(cli)
+	cmd.FrazelleCli(cli)
 
 	cli.Start()
 }
