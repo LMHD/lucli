@@ -7,10 +7,10 @@ import (
 	"github.com/lmhd/lucli/lib"
 )
 
-func IceweaselCli(cli *cali.Cli) {
+func FirefoxCli(cli *cali.Cli) {
 
-	command := cli.NewCommand("iceweasel [params]")
-	command.SetShort("Run Iceweasel in an ephemeral container")
+	command := cli.NewCommand("firefox [params]")
+	command.SetShort("Run an isolated web browser in an ephemeral container")
 
 	task := command.Task("jess/iceweasel")
 
@@ -20,6 +20,13 @@ func IceweaselCli(cli *cali.Cli) {
 		log.Fatalf("Unable to bind tmp X11: %s", err)
 	}
 	task.AddBind(tmpX)
+
+	// Need more than the default SHM
+	// --shm-size=2GB
+	task.HostConf.ShmSize = 2147483648
+	// Run with host network
+	// --net=host
+	task.HostConf.NetworkMode = "host"
 
 	task.SetInitFunc(func(t *cali.Task, args []string) {
 		// Possibly move this call into lib.GetDisplay?

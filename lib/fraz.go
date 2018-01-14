@@ -98,6 +98,11 @@ func StartXQuartz() error {
 		if err != nil {
 			return err
 		}
+
+		killXTermCommand := exec.Command("pkill", "xterm")
+		log.Debugf("XQuartz starts with a useless xterm. Killing it...")
+		killXTermCommand.Run()
+		// Not too bothered if this fails. At least try
 	}
 	return nil
 }
