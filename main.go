@@ -13,6 +13,7 @@ func main() {
 
 	cmd.TerraformCli(cli)
 	cmd.CtopCli(cli)
+	cmd.IceweaselCli(cli)
 
 	cli.Start()
 }
