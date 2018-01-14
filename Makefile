@@ -18,7 +18,7 @@ endif
 DOCKER_RUN_COMMAND=docker run --rm -v $(shell pwd)/:/go/src/github.com/lmhd/lucli -w /go/src/github.com/lmhd/lucli
 
 .DEFAULT_GOAL: $(BINARY)
-$(BINARY): $(BINARY).darwin #$(BINARY).linux.arm
+$(BINARY): $(BINARY).darwin $(BINARY).linux.arm
 	cp $(DEFAULT_SYSTEM_BINARY) $@
 
 $(BINARY).darwin: $(SOURCES)
