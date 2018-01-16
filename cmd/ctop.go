@@ -5,20 +5,20 @@ import (
 	"github.com/skybet/cali"
 )
 
-func CtopCli(cli *cali.Cli) {
+func init() {
 
-	ctop := cli.NewCommand("ctop [command]")
-	ctop.SetShort("Top for containers")
+	command := cli.NewCommand("ctop [command]")
+	command.SetShort("Top for containers")
 
-	ctopTask := ctop.Task("quay.io/vektorlab/ctop:latest")
+	task := command.Task("quay.io/vektorlab/ctop:latest")
 
-	dockerSocket, err := ctopTask.Bind("/var/run/docker.sock", "/var/run/docker.sock")
+	dockerSocket, err := task.Bind("/var/run/docker.sock", "/var/run/docker.sock")
 	if err != nil {
-		log.Fatalf("Unable to bind docker socket: %s", err)
+		log.Fatalf("Unable to format Docker socket bind: %s", err)
 	}
-	ctopTask.AddBinds([]string{dockerSocket})
+	task.AddBinds([]string{dockerSocket})
 
-	ctopTask.SetInitFunc(func(t *cali.Task, args []string) {
+	task.SetInitFunc(func(t *cali.Task, args []string) {
 		// TODO CALI: This needs to exist, even if its empty
 	})
 

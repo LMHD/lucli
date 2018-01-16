@@ -7,12 +7,12 @@ import (
 	"github.com/lmhd/lucli/lib"
 )
 
-func FirefoxCli(cli *cali.Cli) {
+func init() {
 
 	command := cli.NewCommand("firefox [params]")
 	command.SetShort("Run an isolated web browser in an ephemeral container")
 
-	task := command.Task("jess/iceweasel")
+	task := command.Task("jess/firefox")
 
 	// Unsure if this is even necessary
 	tmpX, err := task.Bind("/tmp/.X11-unix", "/tmp/.X11-unix")

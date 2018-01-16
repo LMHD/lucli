@@ -12,10 +12,6 @@ var (
 func init() {
 	cli.SetShort("Example CLI tool")
 	cli.SetLong("A nice long description of what your tool actually does")
-
-	// TODO: move these too
-	CtopCli(cli)
-	FirefoxCli(cli)
 }
 
 func Execute() {
