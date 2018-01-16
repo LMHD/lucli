@@ -2,7 +2,6 @@ package cmd
 
 import (
 	log "github.com/Sirupsen/logrus"
-	"github.com/skybet/cali"
 )
 
 func init() {
@@ -17,9 +16,5 @@ func init() {
 		log.Fatalf("Unable to format Docker socket bind: %s", err)
 	}
 	task.AddBinds([]string{dockerSocket})
-
-	task.SetInitFunc(func(t *cali.Task, args []string) {
-		// TODO CALI: This needs to exist, even if its empty
-	})
 
 }
