@@ -1,19 +1,9 @@
 package main
 
 import (
-	"github.com/skybet/cali"
-
 	"github.com/lmhd/lucli/cmd"
 )
 
 func main() {
-	cli := cali.NewCli("lucli")
-	cli.SetShort("Example CLI tool")
-	cli.SetLong("A nice long description of what your tool actually does")
-
-	cmd.TerraformCli(cli)
-	cmd.CtopCli(cli)
-	cmd.FirefoxCli(cli)
-
-	cli.Start()
+	cmd.Execute()
 }
