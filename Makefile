@@ -38,8 +38,8 @@ $(BINARY).linux.arm: $(SOURCES)
 .PHONY: clean
 clean:
 	rm -f -- ${BINARY}
-	rm -f -- ${BINARY}.darwin
-	rm -f -- ${BINARY}.linux.arm
+	rm -f -- ${BINARY}.darwin    ${BINARY}.darwin.sha
+	rm -f -- ${BINARY}.linux.arm ${BINARY}.linux.arm.sha
 
 .PHONY: install
 install:
