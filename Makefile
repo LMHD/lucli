@@ -61,5 +61,5 @@ release:
 # Proper tests coming at some point
 .PHONY: test
 test:
-	./lucli version
-	./lucli terraform version
+	./$(DEFAULT_SYSTEM_BINARY) version
+	./$(DEFAULT_SYSTEM_BINARY) terraform version
