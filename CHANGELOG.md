@@ -1,4 +1,8 @@
 
+## 0.3.0
+
+* (vim) UID and GID mapping from the host's user to the container's user
+
 ## 0.2.1
 
 * Darwin build is now amd64, rather than 386. Added a linux amd64 build too.
