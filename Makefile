@@ -49,7 +49,7 @@ clean:
 
 .PHONY: install
 install:
-	cp ${BINARY}.darwin.amd64 ~/bin/lucli
+	cp $(DEFAULT_SYSTEM_BINARY) ~/bin/lucli
 
 .PHONY: release
 release:

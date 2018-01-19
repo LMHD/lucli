@@ -11,3 +11,4 @@ before_install:
 script:
   - go run main.go
   - make
+  - make test
