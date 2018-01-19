@@ -15,6 +15,7 @@ UNAME_S := $(shell uname -s)
 DEFAULT_SHASUM_UTIL=shasum
 ifeq ($(UNAME_S),Linux)
 	DEFAULT_SHASUM_UTIL=sha1sum
+	DEFAULT_SYSTEM_BINARY := $(BINARY).linux.amd64
 endif
 
 # Setup the -ldflags option for go build here, interpolate the variable values
@@ -56,3 +57,9 @@ release:
 	curl -T ${BINARY}.linux.amd64  -ulucymhdavies:${BINTRAY_API_KEY} https://api.bintray.com/content/lmhd/${BINARY}/${BINARY}/${VERSION}/${BINARY}-${VERSION}.linux.amd64
 	curl -T ${BINARY}.linux.arm    -ulucymhdavies:${BINTRAY_API_KEY} https://api.bintray.com/content/lmhd/${BINARY}/${BINARY}/${VERSION}/${BINARY}-${VERSION}.linux.arm
 
+# Really simple "does it at least run?" tests for now
+# Proper tests coming at some point
+.PHONY: test
+test:
+	./lucli version
+	./lucli terraform version
