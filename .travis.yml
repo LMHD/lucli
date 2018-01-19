@@ -9,5 +9,5 @@ before_install:
   - go get
 
 script:
-  - go run main.go
   - make
+  - make test

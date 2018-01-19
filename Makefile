@@ -15,6 +15,7 @@ UNAME_S := $(shell uname -s)
 DEFAULT_SHASUM_UTIL=shasum
 ifeq ($(UNAME_S),Linux)
 	DEFAULT_SHASUM_UTIL=sha1sum
+	DEFAULT_SYSTEM_BINARY := $(BINARY).linux.amd64
 endif
 
 # Setup the -ldflags option for go build here, interpolate the variable values
@@ -31,7 +32,7 @@ $(BINARY).darwin.amd64: $(SOURCES)
 	${DEFAULT_SHASUM_UTIL} $@ > $@.sha
 
 $(BINARY).linux.amd64: $(SOURCES)
-	${DOCKER_RUN_COMMAND} -e GOOS=darwin -e GOARCH=amd64 golang:1.9 /bin/bash -c "go get -v && go build ${LDFLAGS} -o $@"
+	${DOCKER_RUN_COMMAND} -e GOOS=linux -e GOARCH=amd64 golang:1.9 /bin/bash -c "go get -v && go build ${LDFLAGS} -o $@"
 	${DEFAULT_SHASUM_UTIL} $@ > $@.sha
 
 $(BINARY).linux.arm: $(SOURCES)
@@ -48,7 +49,7 @@ clean:
 
 .PHONY: install
 install:
-	cp ${BINARY}.darwin.amd64 ~/bin/lucli
+	cp $(DEFAULT_SYSTEM_BINARY) ~/bin/lucli
 
 .PHONY: release
 release:
@@ -56,3 +57,22 @@ release:
 	curl -T ${BINARY}.linux.amd64  -ulucymhdavies:${BINTRAY_API_KEY} https://api.bintray.com/content/lmhd/${BINARY}/${BINARY}/${VERSION}/${BINARY}-${VERSION}.linux.amd64
 	curl -T ${BINARY}.linux.arm    -ulucymhdavies:${BINTRAY_API_KEY} https://api.bintray.com/content/lmhd/${BINARY}/${BINARY}/${VERSION}/${BINARY}-${VERSION}.linux.arm
 
+# Really simple "does it at least run?" tests for now
+# Proper tests coming at some point
+.PHONY: test
+test: test-unit test-integration test-binary
+
+.PHONY: test-unit
+test-unit:
+	echo "Coming soon"
+
+.PHONY: test-integration
+test-integration:
+	go run main.go -d version
+	go run main.go -d terraform version
+	echo "More coming at some point"
+
+.PHONY: test-binary
+test-binary:
+	./$(DEFAULT_SYSTEM_BINARY) version
+	./$(DEFAULT_SYSTEM_BINARY) terraform version
