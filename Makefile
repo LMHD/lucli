@@ -60,6 +60,16 @@ release:
 # Really simple "does it at least run?" tests for now
 # Proper tests coming at some point
 .PHONY: test
-test:
+test: test-unit test-integration test-binary
+
+test-unit:
+	echo "Coming soon"
+
+test-integration:
+	go run main.go version
+	go run main.go terraform version
+	echo "More coming at some point"
+
+test-binary:
 	./$(DEFAULT_SYSTEM_BINARY) version
 	./$(DEFAULT_SYSTEM_BINARY) terraform version
