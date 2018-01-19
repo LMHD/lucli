@@ -1,4 +1,8 @@
 
+## 0.2.1
+
+* Darwin build is now amd64, rather than 386. Added a linux amd64 build too.
+
 ## 0.2.0
 
 * Versioning: lucli version command now displays which version you're running.
