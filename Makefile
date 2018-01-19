@@ -62,14 +62,17 @@ release:
 .PHONY: test
 test: test-unit test-integration test-binary
 
+.PHONY: test-unit
 test-unit:
 	echo "Coming soon"
 
+.PHONY: test-integration
 test-integration:
-	go run main.go version
-	go run main.go terraform version
+	go run main.go -d version
+	go run main.go -d terraform version
 	echo "More coming at some point"
 
+.PHONY: test-binary
 test-binary:
 	./$(DEFAULT_SYSTEM_BINARY) version
 	./$(DEFAULT_SYSTEM_BINARY) terraform version
