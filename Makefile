@@ -10,6 +10,7 @@ BINTRAY_API_KEY=$(shell cat api_key)
 VERSION=$(shell cat VERSION)
 BUILD_TIME=$(shell date +%FT%T%z)
 BUILD_COMMIT=$(shell git rev-parse HEAD)
+BUILD_REPO=$(shel git remote get-url origin)
 
 UNAME_S := $(shell uname -s)
 DEFAULT_SHASUM_UTIL=shasum
@@ -19,7 +20,7 @@ ifeq ($(UNAME_S),Linux)
 endif
 
 # Setup the -ldflags option for go build here, interpolate the variable values
-LDFLAGS=-ldflags \"-X github.com/lmhd/lucli/lib.Version=${VERSION} -X github.com/lmhd/lucli/lib.BuildTime=${BUILD_TIME} -X github.com/lmhd/lucli/lib.BuildCommit=${BUILD_COMMIT}\"
+LDFLAGS=-ldflags \"-X github.com/lmhd/lucli/lib.Version=${VERSION} -X github.com/lmhd/lucli/lib.BuildTime=${BUILD_TIME} -X github.com/lmhd/lucli/lib.BuildCommit=${BUILD_COMMIT} -X github.com/lmhd/lucli/lib.BuildRepo=${BUILD_REPO}\"
 
 DOCKER_RUN_COMMAND=docker run --rm -v $(shell pwd)/:/go/src/github.com/lmhd/lucli -w /go/src/github.com/lmhd/lucli
 

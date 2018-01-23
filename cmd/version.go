@@ -13,7 +13,8 @@ func init() {
 	command.SetShort("Which version are we running?")
 
 	var taskFunc cali.TaskFunc = func(t *cali.Task, args []string) {
-		log.Infof("lucli v%s (%s) (%s)", lib.Version, lib.BuildTime, lib.BuildCommit)
+		log.Infof("lucli v%s", lib.Version)
+		log.Debugf("Build Date: %s\nGit Details: %s @ %s", lib.BuildTime, lib.BuildCommit, lib.BuildRepo)
 	}
 
 	command.Task(taskFunc)

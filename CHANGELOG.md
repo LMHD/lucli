@@ -1,4 +1,8 @@
 
+## 0.3.1
+
+* Version will only show commit (and now repo!) when in verbose mode
+
 ## 0.3.0
 
 * (vim) UID and GID mapping from the host's user to the container's user
