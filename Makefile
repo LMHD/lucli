@@ -10,7 +10,7 @@ BINTRAY_API_KEY=$(shell cat api_key)
 VERSION=$(shell cat VERSION)
 BUILD_TIME=$(shell date +%FT%T%z)
 BUILD_COMMIT=$(shell git rev-parse HEAD)
-BUILD_REPO=$(shel git remote get-url origin)
+BUILD_REPO=$(shell git remote get-url origin)
 
 UNAME_S := $(shell uname -s)
 DEFAULT_SHASUM_UTIL=shasum

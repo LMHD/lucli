@@ -14,7 +14,8 @@ func init() {
 
 	var taskFunc cali.TaskFunc = func(t *cali.Task, args []string) {
 		log.Infof("lucli v%s", lib.Version)
-		log.Debugf("Build Date: %s\nGit Details: %s @ %s", lib.BuildTime, lib.BuildCommit, lib.BuildRepo)
+		log.Debugf("Build Date: %s", lib.BuildTime)
+		log.Debugf("Git Details: %s @ %s", lib.BuildCommit, lib.BuildRepo)
 	}
 
 	command.Task(taskFunc)
