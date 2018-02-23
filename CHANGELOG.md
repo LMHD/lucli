@@ -1,4 +1,8 @@
 
+## 0.3.0
+
+* Generic wrapper around images which expect an X $DISPLAY
+
 ## 0.3.1
 
 * Version will only show commit (and now repo!) when in verbose mode
