@@ -6,6 +6,8 @@ BUILD_TIME=`date +%FT%T%z`
 
 DEFAULT_SYSTEM_BINARY := $(BINARY).darwin.amd64
 
+GO_VERSION := 1.10
+
 BINTRAY_API_KEY=$(shell cat api_key)
 VERSION=$(shell cat VERSION)
 BUILD_TIME=$(shell date +%FT%T%z)
@@ -29,15 +31,15 @@ $(BINARY): $(BINARY).darwin.amd64 $(BINARY).linux.amd64 $(BINARY).linux.arm
 	cp $(DEFAULT_SYSTEM_BINARY) $@
 
 $(BINARY).darwin.amd64: $(SOURCES)
-	${DOCKER_RUN_COMMAND} -e GOOS=darwin -e GOARCH=amd64 golang:1.9 /bin/bash -c "go get -v && go build ${LDFLAGS} -o $@"
+	${DOCKER_RUN_COMMAND} -e GOOS=darwin -e GOARCH=amd64 golang:${GO_VERSION} /bin/bash -c "go get -v && go build ${LDFLAGS} -o $@"
 	${DEFAULT_SHASUM_UTIL} $@ > $@.sha
 
 $(BINARY).linux.amd64: $(SOURCES)
-	${DOCKER_RUN_COMMAND} -e GOOS=linux -e GOARCH=amd64 golang:1.9 /bin/bash -c "go get -v && go build ${LDFLAGS} -o $@"
+	${DOCKER_RUN_COMMAND} -e GOOS=linux -e GOARCH=amd64 golang:${GO_VERSION} /bin/bash -c "go get -v && go build ${LDFLAGS} -o $@"
 	${DEFAULT_SHASUM_UTIL} $@ > $@.sha
 
 $(BINARY).linux.arm: $(SOURCES)
-	${DOCKER_RUN_COMMAND} -e GOOS=linux -e GOARCH=arm golang:1.9 /bin/bash -c "go get -v && go build ${LDFLAGS} -o $@"
+	${DOCKER_RUN_COMMAND} -e GOOS=linux -e GOARCH=arm golang:${GO_VERSION} /bin/bash -c "go get -v && go build ${LDFLAGS} -o $@"
 	${DEFAULT_SHASUM_UTIL} $@ > $@.sha
 
 
