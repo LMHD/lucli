@@ -11,7 +11,7 @@ func init() {
 
 	command := cli.NewCommand("jess [params]")
 	command.SetShort("Very basic generic Jessie Frazelle style GUI Container Runner")
-	command.SetShort(`Runs containers as simply as possible.
+	command.SetLong(`Runs containers as simply as possible.
 
 This is basically the equivalent of:
 

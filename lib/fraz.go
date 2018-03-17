@@ -83,7 +83,8 @@ func StartXQuartz() error {
 		log.Debugf("Checking if XQuartz is already running")
 		processes, err := pgrep.FindProcess("XQuartz", "")
 		if err != nil {
-			return err
+			log.Errorf("Error with pgrep XQuartz: %s", err)
+			return fmt.Errorf("Error with pgrep XQuartz: %s", err)
 		}
 
 		if len(processes) > 0 {
@@ -93,7 +94,8 @@ func StartXQuartz() error {
 			log.Debugf("Launching XQuartz")
 			err = xquartzCommand.Run()
 			if err != nil {
-				return err
+				log.Errorf("Error starting XQuartz: %s", err)
+				return fmt.Errorf("Error starting XQuartz: %s", err)
 			}
 		}
 

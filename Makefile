@@ -21,10 +21,20 @@ ifeq ($(UNAME_S),Linux)
 	DEFAULT_SYSTEM_BINARY := $(BINARY).linux.amd64
 endif
 
+ifndef TRAVIS
+	# TODO: consider enabling this
+	DOCKER_RUN_COMMAND=docker run --rm -v $(shell pwd)/../../../:/go/src/ -w /go/src/github.com/lmhd/lucli
+	#DOCKER_RUN_COMMAND=docker run --rm -v $(shell pwd)/:/go/src/github.com/lmhd/lucli -w /go/src/github.com/lmhd/lucli
+	GITHUB_API_KEY=$(shell cat github_api)
+endif
+ifdef TRAVIS
+	DOCKER_RUN_COMMAND=docker run --rm -v $(shell pwd)/:/go/src/github.com/lmhd/lucli -w /go/src/github.com/lmhd/lucli
+endif
+
 # Setup the -ldflags option for go build here, interpolate the variable values
 LDFLAGS=-ldflags \"-X github.com/lmhd/lucli/lib.Version=${VERSION} -X github.com/lmhd/lucli/lib.BuildTime=${BUILD_TIME} -X github.com/lmhd/lucli/lib.BuildCommit=${BUILD_COMMIT} -X github.com/lmhd/lucli/lib.BuildRepo=${BUILD_REPO}\"
 
-DOCKER_RUN_COMMAND=docker run --rm -v $(shell pwd)/:/go/src/github.com/lmhd/lucli -w /go/src/github.com/lmhd/lucli
+
 
 .DEFAULT_GOAL: $(BINARY)
 $(BINARY): $(BINARY).darwin.amd64 $(BINARY).linux.amd64 $(BINARY).linux.arm
@@ -56,9 +66,7 @@ install:
 
 .PHONY: release
 release:
-	curl -T ${BINARY}.darwin.amd64 -ulucymhdavies:${BINTRAY_API_KEY} https://api.bintray.com/content/lmhd/${BINARY}/${BINARY}/${VERSION}/${BINARY}-${VERSION}.darwin.amd64
-	curl -T ${BINARY}.linux.amd64  -ulucymhdavies:${BINTRAY_API_KEY} https://api.bintray.com/content/lmhd/${BINARY}/${BINARY}/${VERSION}/${BINARY}-${VERSION}.linux.amd64
-	curl -T ${BINARY}.linux.arm    -ulucymhdavies:${BINTRAY_API_KEY} https://api.bintray.com/content/lmhd/${BINARY}/${BINARY}/${VERSION}/${BINARY}-${VERSION}.linux.arm
+	./lucli github-release "${VERSION}" staticli.darwin.amd64 staticli.linux.amd64 staticli.linux.arm -- --github-access-token ${GITHUB_API_KEY} --github-repository staticli/staticli
 
 # Really simple "does it at least run?" tests for now
 # Proper tests coming at some point

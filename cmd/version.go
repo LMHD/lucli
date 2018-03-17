@@ -16,8 +16,11 @@ func init() {
 		log.Infof("lucli v%s", lib.Version)
 		log.Debugf("Build Date: %s", lib.BuildTime)
 		log.Debugf("Git Details: %s @ %s", lib.BuildCommit, lib.BuildRepo)
+
+		// TODO: check for updates
 	}
 
+	// Simple task, just runs a function
 	command.Task(taskFunc)
 
 }

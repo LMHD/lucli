@@ -1,12 +1,18 @@
+language: C
 sudo: required
-language: go
+
 services:
 - docker
-before_install:
-- go get
+stages:
+  - name: after_success
+    if: branch = master
 script:
-- make
-- make test
+  - make -j2 && make test-binary
+deploy:
+  provider: script
+  script: make release
+  on:
+    branch: master
 notifications:
   slack:
     secure: Dh/4YAqv4RJIAvNJZBLT6u63Tu3I1ysVQ1ipyYRTnZZPM79IfchvdmETRk3GRFcYcL29a+7KmSV6uhzmBkNKZbYfYUpbJajB5oMR+LREVYwhlNldrH3rSkxIIw6DO5jKUnze3V1ONX5RP9GqDGpdIQex0E7s8/AoFdYRxK+bzaN+sr9gt0MNKbkoH7bOv7ddnXr0sEz0+GYyz0pAAxLw4R4tG+6c/j0JLLvv6DY24o2bncDWaME3c/sAqqrQUT/jjsypE0U2J6X/MfMcmPLzEKnwQ5U81h2gnKYqDO2hSIVF6IzwO9uKe/bQkGAg5cboOmatU2jg1pdAUKHmvuZ5O7uUigcj6sNbMgGz70dj9KW+kqvSLjTAoRVInBTATkptfIqQ5wej7CRZaxaK33z/kKtulBP5baHnGOQezWzVVB8+F+M0dxh7Ym+F799uWIr4wkS1uV+jFB97cEWw9w3xFGe8RVlhyLdg5RkyileWRpB0UTvZDRmOLCFVOyz6HHTuvBm3fjpTBElKuzyTe0cq2DV8vPB0tBLZCivGicXa8jzm3Dl0t7fMaZBjtI2GjQ4E+oM7q2MOhgI3MRavATeEr0+08FBKA1pjDatmoN5MkYkNdQ0xluY0Ws65uYLWeAYHfebHzQyKRZJY7JROAHo9xsduN1arjkkXrZVCZoedC2Y=

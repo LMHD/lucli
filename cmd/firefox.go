@@ -23,10 +23,16 @@ func init() {
 
 	// Need more than the default SHM
 	// --shm-size=2GB
+	// TODO: configurable with flag?
 	task.HostConf.ShmSize = 2147483648
 	// Run with host network
 	// --net=host
 	task.HostConf.NetworkMode = "host"
+
+	// TODO: look into IPC settings for separation of shared memory
+	// https://docs.docker.com/engine/reference/run/#ipc-settings-ipc
+	// Should be an optional flag
+	// Maybe also look into a Firefox plugin to make clear which browser is which, if running multiple?
 
 	task.SetInitFunc(func(t *cali.Task, args []string) {
 		// Possibly move this call into lib.GetDisplay?

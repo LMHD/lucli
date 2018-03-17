@@ -1,8 +1,16 @@
 package cmd
 
-import "github.com/skybet/cali"
+import (
+	"fmt"
+
+	"github.com/skybet/cali"
+)
 
 func init() {
+
+	// Default image name/version
+	imageName := "hashicorp/terraform"
+	imageVersion := "latest"
 
 	command := cli.NewCommand("terraform [command]")
 	command.SetShort("Run Terraform in an ephemeral container")
@@ -18,11 +26,18 @@ Examples:
   # lucli terraform -- plan -out plan.out
 `)
 	command.Flags().StringP("profile", "p", "default", "Profile to use from the AWS shared credentials file")
+	command.Flags().StringP("terraform-version", "v", imageVersion, "Version of image to use")
 	command.BindFlags()
 
-	task := command.Task("hashicorp/terraform:0.11.1")
+	// Set default image for Run function
+	task := command.Task(fmt.Sprintf("%s:%s", imageName, imageVersion))
+
+	// TODO: some amazing witchcraft, with sidekick containers, providing stuff like awscli
+
+	// Init function, set profile, and image version
 	task.SetInitFunc(func(t *cali.Task, args []string) {
 		t.AddEnv("AWS_PROFILE", cli.FlagValues().GetString("profile"))
+		t.SetImage(fmt.Sprintf("%s:%s", imageName, cli.FlagValues().GetString("terraform-version")))
 	})
 
 }

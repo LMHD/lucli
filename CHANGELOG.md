@@ -1,5 +1,12 @@
+## 0.5.0
 
-## 0.3.0
+* Build with Go 1.10
+* lucli github-release, borrowed from staticli, to release new versions of lucli to github
+* Switched to Github for releases. Sorry, BinTray
+* Terraform now supports arbitrary versions, defaulting to latest
+* Other misc stuff
+
+## 0.4.0
 
 * Generic wrapper around images which expect an X $DISPLAY
 
