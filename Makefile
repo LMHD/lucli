@@ -70,7 +70,7 @@ install:
 
 .PHONY: release
 release:
-	./$(DEFAULT_SYSTEM_BINARY) github-release "${VERSION}" staticli.darwin.amd64 staticli.linux.amd64 staticli.linux.arm -- --github-access-token ${GITHUB_API_KEY} --github-repository staticli/staticli
+	./$(DEFAULT_SYSTEM_BINARY) github-release "${VERSION}" lucli.darwin.amd64 lucli.linux.amd64 lucli.linux.arm -- --github-access-token ${GITHUB_API_KEY} --github-repository lmhd/lucli
 
 # Really simple "does it at least run?" tests for now
 # Proper tests coming at some point
