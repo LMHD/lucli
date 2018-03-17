@@ -5,4 +5,5 @@ var (
 	BuildTime   string
 	BuildCommit string
 	BuildRepo   string
+	BuildUser   string
 )

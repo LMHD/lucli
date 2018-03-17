@@ -13,6 +13,7 @@ VERSION=$(shell cat VERSION)
 BUILD_TIME=$(shell date +%FT%T%z)
 BUILD_COMMIT=$(shell git rev-parse HEAD)
 BUILD_REPO=$(shell git remote get-url origin)
+WHOAMI=$(shell whoami)
 
 UNAME_S := $(shell uname -s)
 DEFAULT_SHASUM_UTIL=shasum
@@ -26,13 +27,16 @@ ifndef TRAVIS
 	DOCKER_RUN_COMMAND=docker run --rm -v $(shell pwd)/../../../:/go/src/ -w /go/src/github.com/lmhd/lucli
 	#DOCKER_RUN_COMMAND=docker run --rm -v $(shell pwd)/:/go/src/github.com/lmhd/lucli -w /go/src/github.com/lmhd/lucli
 	GITHUB_API_KEY=$(shell cat github_api)
+
+	# Setup the -ldflags option for go build here, interpolate the variable values
+	LDFLAGS=-ldflags \"-X github.com/lmhd/lucli/lib.Version=${VERSION} -X github.com/lmhd/lucli/lib.BuildTime=${BUILD_TIME} -X github.com/lmhd/lucli/lib.BuildCommit=${BUILD_COMMIT} -X github.com/lmhd/lucli/lib.BuildRepo=${BUILD_REPO} -X github.com/lmhd/lucli/lib.BuildUser=${WHOAMI}\"
 endif
 ifdef TRAVIS
 	DOCKER_RUN_COMMAND=docker run --rm -v $(shell pwd)/:/go/src/github.com/lmhd/lucli -w /go/src/github.com/lmhd/lucli
-endif
 
-# Setup the -ldflags option for go build here, interpolate the variable values
-LDFLAGS=-ldflags \"-X github.com/lmhd/lucli/lib.Version=${VERSION} -X github.com/lmhd/lucli/lib.BuildTime=${BUILD_TIME} -X github.com/lmhd/lucli/lib.BuildCommit=${BUILD_COMMIT} -X github.com/lmhd/lucli/lib.BuildRepo=${BUILD_REPO}\"
+	# Setup the -ldflags option for go build here, interpolate the variable values
+	LDFLAGS=-ldflags \"-X github.com/lmhd/lucli/lib.Version=${VERSION} -X github.com/lmhd/lucli/lib.BuildTime=${BUILD_TIME} -X github.com/lmhd/lucli/lib.BuildCommit=${BUILD_COMMIT} -X github.com/lmhd/lucli/lib.BuildRepo=${BUILD_REPO} -X github.com/lmhd/lucli/lib.BuildUser=TravisCI\"
+endif
 
 
 
