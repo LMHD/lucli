@@ -9,24 +9,25 @@ import (
 
 func init() {
 
-	command := cli.NewCommand("version")
-	command.SetShort("Which version are we running?")
+	command := cli.NewCommand("update")
+	command.SetShort("Update the current running version of lucli")
 
 	var taskFunc cali.TaskFunc = func(t *cali.Task, args []string) {
 		lib.PrintVersion()
 
-		isLatestVersion, releaseData, err := lib.IsLatestVersion()
+		isLatestVersion, updateReleaseData, err := lib.IsLatestVersion()
 		if err != nil {
 			log.Fatalf("Unable to check for update: %s", err)
 		}
 
 		if !isLatestVersion {
-			log.Infof("You're not running the latest version 😱")
-			log.Infof("Update to v%s with: lucli update", releaseData.Name)
+			err = lib.Update(updateReleaseData)
+			if err != nil {
+				log.Fatalf("Unable to update: %s", err)
+			}
 		}
 	}
 
-	// Simple task, just runs a function
 	command.Task(taskFunc)
 
 }

@@ -1,3 +1,7 @@
+## 0.6.0
+
+* lucli update
+
 ## 0.5.0
 
 * Build with Go 1.10
