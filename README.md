@@ -4,5 +4,5 @@ Pronounced "loosely", because while it's cool, its utility is only loosely based
 
 A [Cali](https://github.com/skybet/cali) App
 
-[ ![Download](https://api.bintray.com/packages/lmhd/lucli/lucli/images/download.svg) ](https://bintray.com/lmhd/lucli/lucli/_latestVersion)
+[ ![GitHub release](https://img.shields.io/github/release/lmhd/lucli.svg) ](https://github.com/LMHD/lucli/releases)
 [![Build Status](https://travis-ci.org/LMHD/lucli.svg?branch=master)](https://travis-ci.org/LMHD/lucli)
