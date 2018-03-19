@@ -1,3 +1,7 @@
+## 0.6.1
+
+* lucli version now says if you're already on the latest version
+
 ## 0.6.0
 
 * lucli update

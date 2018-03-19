@@ -20,7 +20,9 @@ func init() {
 			log.Fatalf("Unable to check for update: %s", err)
 		}
 
-		if !isLatestVersion {
+		if isLatestVersion {
+			log.Infof("You're already using the latest version. Well done!")
+		} else {
 			err = lib.Update(updateReleaseData)
 			if err != nil {
 				log.Fatalf("Unable to update: %s", err)

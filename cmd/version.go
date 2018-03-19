@@ -20,7 +20,9 @@ func init() {
 			log.Fatalf("Unable to check for update: %s", err)
 		}
 
-		if !isLatestVersion {
+		if isLatestVersion {
+			log.Infof("You're already using the latest version. Well done!")
+		} else {
 			log.Infof("You're not running the latest version 😱")
 			log.Infof("Update to v%s with: lucli update", releaseData.Name)
 		}
