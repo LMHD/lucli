@@ -44,6 +44,8 @@ func IsLatestVersion() (bool, GithubRelease, error) {
 	releaseData := GithubRelease{}
 	GetJson(releaseUrl, &releaseData)
 
+	log.Debugf("Latest version info: %s", releaseData)
+
 	if releaseData.Name == "" {
 		return false, releaseData, fmt.Errorf("Couldn't get latest version of lucli, do you have an internet connection?")
 	}

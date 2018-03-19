@@ -89,5 +89,5 @@ test-integration:
 
 .PHONY: test-binary
 test-binary:
-	./$(DEFAULT_SYSTEM_BINARY) version
-	./$(DEFAULT_SYSTEM_BINARY) terraform version
+	./$(DEFAULT_SYSTEM_BINARY) -d version
+	./$(DEFAULT_SYSTEM_BINARY) -d terraform version
