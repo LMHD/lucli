@@ -1,3 +1,9 @@
+
+## 0.6.2
+
+* lucli version --check-update=false, for just displaying current version
+(Because Travis is inconsistent with whether it can do this or not)
+
 ## 0.6.1
 
 * lucli version now says if you're already on the latest version
