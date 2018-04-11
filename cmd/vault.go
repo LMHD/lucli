@@ -38,7 +38,7 @@ func init() {
 	// Init function, set profile, and image version
 	task.SetInitFunc(func(t *cali.Task, args []string) {
 		t.AddEnv("VAULT_ADDR", cli.FlagValues().GetString("vault-address"))
-		t.SetImage(fmt.Sprintf("%s:%s", imageName, cli.FlagValues().GetString("terraform-version")))
+		t.SetImage(fmt.Sprintf("%s:%s", imageName, cli.FlagValues().GetString("vault-version")))
 	})
 
 }

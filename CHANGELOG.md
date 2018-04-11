@@ -1,4 +1,8 @@
 
+## 0.7.1
+
+* Correctly use vault-version flag
+
 ## 0.7.0
 
 * Initial PoC Vault
