@@ -1,3 +1,6 @@
+## 0.7.2
+
+* Build with latest Cali, 0.2.0
 
 ## 0.7.1
 
