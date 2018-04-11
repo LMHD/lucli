@@ -24,13 +24,14 @@ Examples:
   # lucli terraform -- plan -out plan.out
 `)
 
+	// Set default image for Run function
+	imageName := "hashicorp/terraform"
+	imageVersion := "latest"
+
 	command.Flags().StringP("profile", "p", "default", "Profile to use from the AWS shared credentials file")
 	command.Flags().StringP("terraform-version", "v", imageVersion, "Version of image to use")
 	command.BindFlags()
 
-	// Set default image for Run function
-	imageName := "hashicorp/terraform"
-	imageVersion := "latest"
 	task := command.Task(fmt.Sprintf("%s:%s", imageName, imageVersion))
 
 	// Init function, set profile, and image version

@@ -1,4 +1,8 @@
 
+## 0.7.0
+
+* Initial PoC Vault
+
 ## 0.6.2
 
 * lucli version --check-update=false, for just displaying current version
