@@ -1,13 +1,12 @@
 language: C
 sudo: required
-
 services:
 - docker
 stages:
-  - name: after_success
-    if: branch = master
+- name: after_success
+  if: branch = master
 script:
-  - make -j2 && make test-binary
+- make -j2 && make test-binary
 deploy:
   provider: script
   script: make release
@@ -16,4 +15,5 @@ deploy:
     branch: master
 notifications:
   slack:
-    secure: Dh/4YAqv4RJIAvNJZBLT6u63Tu3I1ysVQ1ipyYRTnZZPM79IfchvdmETRk3GRFcYcL29a+7KmSV6uhzmBkNKZbYfYUpbJajB5oMR+LREVYwhlNldrH3rSkxIIw6DO5jKUnze3V1ONX5RP9GqDGpdIQex0E7s8/AoFdYRxK+bzaN+sr9gt0MNKbkoH7bOv7ddnXr0sEz0+GYyz0pAAxLw4R4tG+6c/j0JLLvv6DY24o2bncDWaME3c/sAqqrQUT/jjsypE0U2J6X/MfMcmPLzEKnwQ5U81h2gnKYqDO2hSIVF6IzwO9uKe/bQkGAg5cboOmatU2jg1pdAUKHmvuZ5O7uUigcj6sNbMgGz70dj9KW+kqvSLjTAoRVInBTATkptfIqQ5wej7CRZaxaK33z/kKtulBP5baHnGOQezWzVVB8+F+M0dxh7Ym+F799uWIr4wkS1uV+jFB97cEWw9w3xFGe8RVlhyLdg5RkyileWRpB0UTvZDRmOLCFVOyz6HHTuvBm3fjpTBElKuzyTe0cq2DV8vPB0tBLZCivGicXa8jzm3Dl0t7fMaZBjtI2GjQ4E+oM7q2MOhgI3MRavATeEr0+08FBKA1pjDatmoN5MkYkNdQ0xluY0Ws65uYLWeAYHfebHzQyKRZJY7JROAHo9xsduN1arjkkXrZVCZoedC2Y=
+    rooms:
+      secure: GkFN2xcKiSMYHIZfBvOT1DBR6pcTXNUeuFlZ+XlcIeAyVD09nd8D306qLFJTArnNeMK55+R/iP0aFxIlGiTOUH0ubrUPJqVAc57nKH1RJZUHIil9tUIhYzvGuhD2efU2JBu207XWKAhMbOlgTlWN6dbp6NJwMb06qQTAbkn5f3w8jT8EkNaxhv5ZEOeKAyT/Rb1B4I2j4Nynh6PLa20vEGMa5iSZqy4UvQBEQBb3UwMt5uWhyl1g+rURP1VLd9nQuB4vabs96VPdhviuC/4v1AxhGrflQEmo2iCyxhjqHcfvVVaYHXUUXsGb1xVXWVZIf7pnGF1dDlY9wHrbvIbiFqPc43QZXCuyzqqahuC7fklX38gFOduAPfe/JmfTOpL1iNolL9Ejt/ZD13pm22QPhpVH2Cmdsh5Fc6t/i67PwPoeKRL51HODxmDbiqUsJUabjlhB4syugnbVJUv+TLpP99f5hMQ7s7gnqjckH/8yi4DXeexqLDwcaggDl7ctrHLnjrdRA8JlAfHkuDL2+XnhVSkOhajJNMTf7Fnl1iFQiahibGl2J6ILuFrcCJyQkDlKipUPn4WRjFsb0e4sQ/EbvaD7KEPm6PK7mgu0bbBbX+YxvFp/RNG/uZWgvLlpg4vm6j7Ags3HVfImOhx0xis4cr0CWaZzimv/xxkbrFhQWAI=
