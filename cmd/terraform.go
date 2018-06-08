@@ -3,6 +3,7 @@ package cmd
 import (
 	"fmt"
 
+	"github.com/lmhd/lucli/creds"
 	"github.com/skybet/cali"
 )
 
@@ -28,7 +29,6 @@ Examples:
 	imageName := "hashicorp/terraform"
 	imageVersion := "latest"
 
-	command.Flags().StringP("profile", "p", "default", "Profile to use from the AWS shared credentials file")
 	command.Flags().StringP("terraform-version", "v", imageVersion, "Version of image to use")
 	command.BindFlags()
 
@@ -36,8 +36,9 @@ Examples:
 
 	// Init function, set profile, and image version
 	task.SetInitFunc(func(t *cali.Task, args []string) {
-		t.AddEnv("AWS_PROFILE", cli.FlagValues().GetString("profile"))
 		t.SetImage(fmt.Sprintf("%s:%s", imageName, cli.FlagValues().GetString("terraform-version")))
+
+		_ = creds.BindAWS(t, args)
 	})
 
 }

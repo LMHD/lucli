@@ -1,3 +1,7 @@
+## 0.8.0
+
+* Initial version of keybase for AWS credentials
+
 ## 0.7.2
 
 * Build with latest Cali, 0.2.0
