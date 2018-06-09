@@ -38,6 +38,8 @@ Examples:
 	task.SetInitFunc(func(t *cali.Task, args []string) {
 		t.SetImage(fmt.Sprintf("%s:%s", imageName, cli.FlagValues().GetString("terraform-version")))
 
+		// TODO: custom plugins
+
 		_ = creds.BindAWS(t, args)
 	})
 

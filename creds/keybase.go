@@ -7,21 +7,37 @@ import (
 	"github.com/skybet/cali"
 )
 
-func BindAWS(t *cali.Task, args []string) error {
+var (
+	keybasePrivDir = "/keybase/private/"
 
 	// TODO: lmhd <-- make this a global config
+	keybaseUser = "lmhd"
+)
 
-	keybaseDir, err := filepath.EvalSymlinks("/keybase/private/lmhd")
+func keybaseDir() (string, error) {
+	keybaseDir, err := filepath.EvalSymlinks(keybasePrivDir + keybaseUser)
+	if err != nil {
+		return "", err
+	}
+	log.Debugf("Keybase Dir: %s", keybaseDir)
+
+	return keybaseDir, nil
+}
+
+func BindAWS(t *cali.Task, args []string) error {
+	keybaseDir, err := keybaseDir()
 	if err != nil {
 		return err
 	}
-	log.Debugf("Keybase Dir: %s", keybaseDir)
 
 	awsDir, err := t.Bind(keybaseDir+"/aws", "/root/.aws")
 	if err != nil {
 		return err
 	}
+
 	t.AddBinds([]string{awsDir})
 
 	return nil
 }
+
+// TODO: BindVault

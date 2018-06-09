@@ -1,3 +1,7 @@
+## 0.9.0
+
+* AWS CLI / AWS Shell, with lucli awscli
+
 ## 0.8.0
 
 * Initial version of keybase for AWS credentials

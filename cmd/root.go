@@ -12,6 +12,11 @@ var (
 func init() {
 	cli.SetShort("Example CLI tool")
 	cli.SetLong("A nice long description of what your tool actually does")
+
+	// TODO: global flag: creds
+
+	// TODO: global flag
+	// AWS_PROFILE from --aws-profile flag/viper conf
 }
 
 func Execute() {
