@@ -1,8 +1,6 @@
 package cmd
 
-import (
-	log "github.com/Sirupsen/logrus"
-)
+import "github.com/skybet/cali"
 
 func init() {
 
@@ -11,10 +9,8 @@ func init() {
 
 	task := command.Task("quay.io/vektorlab/ctop:latest")
 
-	dockerSocket, err := task.Bind("/var/run/docker.sock", "/var/run/docker.sock")
-	if err != nil {
-		log.Fatalf("Unable to format Docker socket bind: %s", err)
-	}
-	task.AddBinds([]string{dockerSocket})
+	task.SetInitFunc(func(t *cali.Task, args []string) {
+		_ = task.BindDockerSocket()
+	})
 
 }
