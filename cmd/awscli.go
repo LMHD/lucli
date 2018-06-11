@@ -1,8 +1,11 @@
 package cmd
 
 import (
+	"os"
+
 	log "github.com/Sirupsen/logrus"
 	"github.com/lmhd/lucli/creds"
+	"github.com/lmhd/lucli/lib"
 	"github.com/skybet/cali"
 )
 
@@ -11,6 +14,10 @@ func init() {
 	// TODO: alias as awsshell?
 	command := cli.NewCommand("awscli [command]")
 	command.SetShort("AWS CLI / Shell")
+
+	// Allow this command to be run with awsshell too
+	// Dunno. Might made this a top tier command instead, so it shows in help.
+	command.SetAliases([]string{"awsshell"})
 
 	// TODO: long description
 	// Include AWS CLI/Shell
@@ -22,9 +29,9 @@ func init() {
 	task := command.Task("lucymhdavies/awscli:latest")
 
 	task.SetInitFunc(func(t *cali.Task, args []string) {
-		// TODO: detect if ran with awsshell alias?
 
-		if cli.FlagValues().GetBool("shell") {
+		// if awscli -s, or awsshell
+		if cli.FlagValues().GetBool("shell") || lib.StringSliceContains(os.Args, "awsshell") {
 			log.Debugf("Using AWS Shell")
 
 			// TODO: cali DockerClient.SetEntrypoint
