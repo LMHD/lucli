@@ -1,3 +1,7 @@
+## 0.10.0
+
+* Dry - https://github.com/moncho/dry
+
 ## 0.9.0
 
 * AWS CLI / AWS Shell, with lucli awscli
