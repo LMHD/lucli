@@ -1,3 +1,7 @@
+## 0.11.1
+
+* Sportsball, but with UK times
+
 ## 0.11.0
 
 * SPORTSBALL!
