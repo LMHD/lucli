@@ -1,3 +1,8 @@
+## 0.12.0
+
+* S3 Explorer, from https://github.com/tinyzimmer/s3explorer
+* Global -p / --aws-profile flag
+
 ## 0.11.1
 
 * Sportsball, but with UK times

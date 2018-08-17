@@ -40,6 +40,7 @@ Examples:
 
 		// TODO: custom plugins
 
+		task.AddEnv("AWS_PROFILE", cli.FlagValues().GetString("aws-profile"))
 		_ = creds.BindAWS(t, args)
 	})
 

@@ -15,8 +15,8 @@ func init() {
 
 	// TODO: global flag: creds
 
-	// TODO: global flag
-	// AWS_PROFILE from --aws-profile flag/viper conf
+	cli.Flags().StringP("aws-profile", "p", "lmhd_root", "AWS Profile to use (if applicable)")
+	cli.BindFlags()
 }
 
 func Execute() {

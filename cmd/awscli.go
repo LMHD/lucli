@@ -33,6 +33,7 @@ func init() {
 			log.Debugf("Using AWS CLI")
 		}
 
+		task.AddEnv("AWS_PROFILE", cli.FlagValues().GetString("aws-profile"))
 		_ = creds.BindAWS(t, args)
 	})
 
