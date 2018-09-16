@@ -10,7 +10,6 @@ import (
 	"runtime"
 
 	log "github.com/Sirupsen/logrus"
-	"github.com/poofyleek/pgrep"
 )
 
 // GetDisplay returns DISPLAY (for macOS), as would be needed for X11
@@ -80,23 +79,12 @@ func externalIP() (string, error) {
 // If it's already running, it will use that
 func StartXQuartz() error {
 	if runtime.GOOS == "darwin" {
-		log.Debugf("Checking if XQuartz is already running")
-		processes, err := pgrep.FindProcess("XQuartz", "")
+		xquartzCommand := exec.Command("open", "-a", "XQuartz")
+		log.Debugf("Launching XQuartz")
+		err := xquartzCommand.Run()
 		if err != nil {
-			log.Errorf("Error with pgrep XQuartz: %s", err)
-			return fmt.Errorf("Error with pgrep XQuartz: %s", err)
-		}
-
-		if len(processes) > 0 {
-			log.Debugf("XQuartz already running: %s", processes)
-		} else {
-			xquartzCommand := exec.Command("open", "-a", "XQuartz")
-			log.Debugf("Launching XQuartz")
-			err = xquartzCommand.Run()
-			if err != nil {
-				log.Errorf("Error starting XQuartz: %s", err)
-				return fmt.Errorf("Error starting XQuartz: %s", err)
-			}
+			log.Errorf("Error starting XQuartz: %s", err)
+			return fmt.Errorf("Error starting XQuartz: %s", err)
 		}
 
 		ip, err := externalIP()

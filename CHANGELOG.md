@@ -1,3 +1,39 @@
+## 0.12.0
+
+* S3 Explorer, from https://github.com/tinyzimmer/s3explorer
+* Global -p / --aws-profile flag
+
+## 0.11.1
+
+* Sportsball, but with UK times
+
+## 0.11.0
+
+* SPORTSBALL!
+
+## 0.10.0
+
+* Dry - https://github.com/moncho/dry
+
+## 0.9.0
+
+* AWS CLI / AWS Shell, with lucli awscli
+
+## 0.8.0
+
+* Initial version of keybase for AWS credentials
+
+## 0.7.2
+
+* Build with latest Cali, 0.2.0
+
+## 0.7.1
+
+* Correctly use vault-version flag
+
+## 0.7.0
+
+* Initial PoC Vault
 
 ## 0.6.2
 
