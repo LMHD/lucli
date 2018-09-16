@@ -10,8 +10,8 @@ var (
 )
 
 func init() {
-	cli.SetShort("Example CLI tool")
-	cli.SetLong("A nice long description of what your tool actually does")
+	cli.SetShort("Lu(cy) CLI")
+	cli.SetLong("Named after myself, because I'm vain.\nPronounced 'loosely', because while it's cool, its utility is only loosely based in reality.")
 }
 
 func Execute() {
