@@ -1,3 +1,7 @@
+## 0.13.0
+
+* Mapcrafter
+
 ## 0.12.0
 
 * S3 Explorer, from https://github.com/tinyzimmer/s3explorer
