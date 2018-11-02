@@ -10,7 +10,7 @@ func init() {
 
 	command.SetShort("Run Mapcrafter in an ephemeral container")
 
-	task := command.Task("lucymhdavies/mapcrafter")
+	task := command.Task("mapcrafter/mapcrafter:world113")
 
 	// Init function
 	task.SetInitFunc(func(t *cali.Task, args []string) {
