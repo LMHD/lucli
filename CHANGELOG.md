@@ -1,3 +1,7 @@
+## 0.14.0
+
+* Initial support for custom Terraform plugins
+
 ## 0.13.1
 
 * Use mapcrafter/mapcrafter:113
