@@ -1,3 +1,7 @@
+## 0.14.1
+
+* Fix panic when running `lucli terraform` with no args
+
 ## 0.14.0
 
 * Initial support for custom Terraform plugins

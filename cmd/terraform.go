@@ -50,7 +50,7 @@ Examples:
 		_ = creds.BindAWS(t, args)
 
 		// For terraform init only, download custom plugins, if any
-		if args[0] == "init" {
+		if len(args) > 0 && args[0] == "init" {
 			if cli.FlagValues().IsSet("terraform.plugins.urls") {
 				pluginURLs := cli.FlagValues().GetStringSlice("terraform.plugins.urls")
 				log.Infof("Using %v custom plugins: %v", len(pluginURLs), pluginURLs)
