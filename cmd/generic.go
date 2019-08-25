@@ -32,6 +32,10 @@ Many images will require additional docker run parameters (and thus custom comma
 		image := cli.FlagValues().GetString("docker-image")
 		log.Infof("Using image: %s", image)
 		t.SetImage(image)
+
+		entrypoint := cli.FlagValues().GetString("entrypoint")
+		log.Infof("Using entrypoint: %s", entrypoint)
+		t.Conf.Entrypoint = []string{entrypoint}
 	})
 
 }

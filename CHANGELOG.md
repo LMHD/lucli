@@ -1,3 +1,7 @@
+## 0.15.1
+
+* The `--entrypoint`/`-e` flag for `lucli generic` should actually, ya know, DO SOMETHING
+
 ## 0.15.0
 
 * Generic container runner, for quick $PWD:/tmp/workdir
