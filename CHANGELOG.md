@@ -1,3 +1,7 @@
+## 0.15.0
+
+* Generic container runner, for quick $PWD:/tmp/workdir
+
 ## 0.14.1
 
 * Fix panic when running `lucli terraform` with no args
