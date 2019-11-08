@@ -6,7 +6,7 @@ BUILD_TIME=`date +%FT%T%z`
 
 DEFAULT_SYSTEM_BINARY := $(BINARY).darwin.amd64
 
-GO_VERSION := 1.10
+GO_VERSION := 1.13
 
 BINTRAY_API_KEY=$(shell cat api_key)
 VERSION=$(shell cat VERSION)

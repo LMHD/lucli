@@ -1,3 +1,7 @@
+## 0.16.0
+
+* Go Modules, and Go 1.13
+
 ## 0.15.1
 
 * The `--entrypoint`/`-e` flag for `lucli generic` should actually, ya know, DO SOMETHING

@@ -5,7 +5,7 @@ package cmd
 import "github.com/skybet/cali"
 import "os/user"
 import "os"
-import log "github.com/Sirupsen/logrus"
+import log "github.com/sirupsen/logrus"
 import (
 	_ "github.com/pkg/errors"
 )
