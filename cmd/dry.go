@@ -9,7 +9,7 @@ func init() {
 	command := cli.NewCommand("dry [command]")
 	command.SetShort("Manage docker")
 
-	task := command.Task("moncho/dry")
+	task := command.Task("docker.io/moncho/dry")
 
 	dockerSocket, err := task.Bind("/var/run/docker.sock", "/var/run/docker.sock")
 	if err != nil {

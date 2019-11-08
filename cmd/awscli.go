@@ -1,8 +1,8 @@
 package cmd
 
 import (
-	log "github.com/sirupsen/logrus"
 	"github.com/lmhd/lucli/creds"
+	log "github.com/sirupsen/logrus"
 	"github.com/skybet/cali"
 )
 
@@ -19,7 +19,7 @@ func init() {
 	command.Flags().BoolP("shell", "s", false, "Use AWS Shell")
 	command.BindFlags()
 
-	task := command.Task("lucymhdavies/awscli:latest")
+	task := command.Task("docker.io/lucymhdavies/awscli:latest")
 
 	task.SetInitFunc(func(t *cali.Task, args []string) {
 		// TODO: detect if ran with awsshell alias?

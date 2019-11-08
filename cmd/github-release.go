@@ -22,7 +22,7 @@ you can also export GITHUB_RELEASE_ACCESS_TOKEN
 `)
 	command.BindFlags()
 
-	task := command.Task("buildkite/github-release")
+	task := command.Task("docker.io/buildkite/github-release")
 
 	u, err := user.Current()
 	if err != nil {

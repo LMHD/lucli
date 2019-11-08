@@ -14,7 +14,7 @@ func init() {
 	command.SetShort("Run Vault in an ephemeral container")
 
 	// Set default image for Run function
-	imageName := "vault"
+	imageName := "docker.io/library/vault"
 	imageVersion := "latest"
 	command.Flags().String("vault-version", imageVersion, "Version of image to use")
 

@@ -7,10 +7,10 @@ import (
 	"path"
 	"time"
 
-	log "github.com/sirupsen/logrus"
 	"github.com/docker/docker/api/types"
 	"github.com/lmhd/lucli/creds"
 	"github.com/lmhd/lucli/lib"
+	log "github.com/sirupsen/logrus"
 	"github.com/skybet/cali"
 )
 
@@ -33,7 +33,7 @@ Examples:
 `)
 
 	// Set default image for Run function
-	imageName := "hashicorp/terraform"
+	imageName := "docker.io/hashicorp/terraform"
 	imageVersion := "latest"
 
 	command.Flags().StringP("terraform-version", "v", imageVersion, "Version of image to use")

@@ -32,7 +32,7 @@ Many images will require additional docker run parameters (and thus custom comma
 	task.HostConf.ShmSize = 2147483648
 
 	// Flag to specify which image to use
-	command.Flags().StringP("image", "i", "jess/firefox", "Image to use")
+	command.Flags().StringP("image", "i", "docker.io/jess/firefox", "Image to use")
 	command.BindFlags()
 
 	task.SetInitFunc(func(t *cali.Task, args []string) {
