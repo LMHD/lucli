@@ -5,7 +5,7 @@ package cmd
 import "github.com/skybet/cali"
 import "os/user"
 import "os"
-import log "github.com/Sirupsen/logrus"
+import log "github.com/sirupsen/logrus"
 import (
 	_ "github.com/pkg/errors"
 )
@@ -22,7 +22,7 @@ you can also export GITHUB_RELEASE_ACCESS_TOKEN
 `)
 	command.BindFlags()
 
-	task := command.Task("buildkite/github-release")
+	task := command.Task("docker.io/buildkite/github-release")
 
 	u, err := user.Current()
 	if err != nil {

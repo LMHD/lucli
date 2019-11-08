@@ -3,13 +3,13 @@ package cmd
 import (
 	"os/user"
 
-	log "github.com/Sirupsen/logrus"
+	log "github.com/sirupsen/logrus"
 )
 
 func init() {
 	command := cli.NewCommand("vim [command]")
 	command.SetShort("Run Vim in an ephemeral container")
-	task := command.Task("lucymhdavies/vim:latest")
+	task := command.Task("docker.io/lucymhdavies/vim:latest")
 
 	// TODO: this should be common to all containers!
 	// And probably should be standardised as part of Cali!

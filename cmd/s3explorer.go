@@ -12,7 +12,7 @@ func init() {
 
 	command.BindFlags()
 
-	task := command.Task("lucymhdavies/s3explorer:latest")
+	task := command.Task("docker.io/lucymhdavies/s3explorer:latest")
 
 	task.SetInitFunc(func(t *cali.Task, args []string) {
 		task.AddEnv("AWS_PROFILE", cli.FlagValues().GetString("aws-profile"))

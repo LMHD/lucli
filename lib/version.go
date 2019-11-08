@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"runtime"
 
-	log "github.com/Sirupsen/logrus"
+	log "github.com/sirupsen/logrus"
 	"github.com/inconshreveable/go-update"
 	pb "gopkg.in/cheggaaa/pb.v2"
 )

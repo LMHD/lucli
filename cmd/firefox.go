@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	log "github.com/Sirupsen/logrus"
+	log "github.com/sirupsen/logrus"
 	"github.com/skybet/cali"
 
 	"github.com/lmhd/lucli/lib"
@@ -12,7 +12,7 @@ func init() {
 	command := cli.NewCommand("firefox [params]")
 	command.SetShort("Run an isolated web browser in an ephemeral container")
 
-	task := command.Task("jess/firefox")
+	task := command.Task("docker.io/jess/firefox")
 
 	// Unsure if this is even necessary
 	tmpX, err := task.Bind("/tmp/.X11-unix", "/tmp/.X11-unix")

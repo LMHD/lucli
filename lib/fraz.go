@@ -9,7 +9,7 @@ import (
 	"os/exec"
 	"runtime"
 
-	log "github.com/Sirupsen/logrus"
+	log "github.com/sirupsen/logrus"
 )
 
 // GetDisplay returns DISPLAY (for macOS), as would be needed for X11
