@@ -47,7 +47,14 @@ Examples:
 		t.SetImage(finalImageName)
 
 		task.AddEnv("AWS_PROFILE", cli.FlagValues().GetString("aws-profile"))
-		_ = creds.BindAWS(t, args)
+		err := creds.BindAWS(t, args)
+		if err != nil {
+			log.Fatalf("Could not bind AWS dir: %v", err)
+		}
+		err = creds.BindTerraform(t, args)
+		if err != nil {
+			log.Fatalf("Could not bind Terraform dir: %v", err)
+		}
 
 		// For terraform init only, download custom plugins, if any
 		if len(args) > 0 && args[0] == "init" {

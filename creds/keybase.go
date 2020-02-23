@@ -40,4 +40,20 @@ func BindAWS(t *cali.Task, args []string) error {
 	return nil
 }
 
+func BindTerraform(t *cali.Task, args []string) error {
+	keybaseDir, err := keybaseDir()
+	if err != nil {
+		return err
+	}
+
+	tfDir, err := t.Bind(keybaseDir+"/terraformrc", "/root/.terraformrc")
+	if err != nil {
+		return err
+	}
+
+	t.AddBinds([]string{tfDir})
+
+	return nil
+}
+
 // TODO: BindVault

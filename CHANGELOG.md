@@ -1,3 +1,7 @@
+## 0.17.0
+
+* Bind .terraformrc file when running Terraform
+
 ## 0.16.0
 
 * Go Modules, and Go 1.13
