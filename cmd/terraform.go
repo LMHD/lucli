@@ -49,11 +49,11 @@ Examples:
 		task.AddEnv("AWS_PROFILE", cli.FlagValues().GetString("aws-profile"))
 		err := creds.BindAWS(t, args)
 		if err != nil {
-			log.Fatalf("Could not bind AWS dir: %v", err)
+			log.Warnf("Could not bind AWS dir: %v", err)
 		}
 		err = creds.BindTerraform(t, args)
 		if err != nil {
-			log.Fatalf("Could not bind Terraform dir: %v", err)
+			log.Warnf("Could not bind Terraform dir: %v", err)
 		}
 
 		// For terraform init only, download custom plugins, if any
