@@ -8,7 +8,7 @@ import (
 )
 
 var (
-	keybasePrivDir = "/keybase/private/"
+	keybasePrivDir = "/Volumes/Keybase/private/"
 
 	// TODO: lmhd <-- make this a global config
 	keybaseUser = "lmhd"

@@ -1,3 +1,7 @@
+## 0.17.1
+
+* Fix Keybase private dir
+
 ## 0.17.0
 
 * Bind .terraformrc file when running Terraform
