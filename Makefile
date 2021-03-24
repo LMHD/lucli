@@ -6,7 +6,7 @@ BUILD_TIME=`date +%FT%T%z`
 
 DEFAULT_SYSTEM_BINARY := $(BINARY).darwin.amd64
 
-GO_VERSION := 1.13
+GO_VERSION := 1.16
 
 BINTRAY_API_KEY=$(shell cat api_key)
 VERSION=$(shell cat VERSION)
@@ -48,6 +48,10 @@ $(BINARY).darwin.amd64: $(SOURCES)
 	${DOCKER_RUN_COMMAND} -e GOOS=darwin -e GOARCH=amd64 golang:${GO_VERSION} /bin/bash -c "go get -v && go build ${LDFLAGS} -o $@"
 	${DEFAULT_SHASUM_UTIL} $@ > $@.sha
 
+$(BINARY).darwin.arm64: $(SOURCES)
+	${DOCKER_RUN_COMMAND} -e GOOS=darwin -e GOARCH=amd64 golang:${GO_VERSION} /bin/bash -c "go get -v && go build ${LDFLAGS} -o $@"
+	${DEFAULT_SHASUM_UTIL} $@ > $@.sha
+
 $(BINARY).linux.amd64: $(SOURCES)
 	${DOCKER_RUN_COMMAND} -e GOOS=linux -e GOARCH=amd64 golang:${GO_VERSION} /bin/bash -c "go get -v && go build ${LDFLAGS} -o $@"
 	${DEFAULT_SHASUM_UTIL} $@ > $@.sha
@@ -61,6 +65,7 @@ $(BINARY).linux.arm: $(SOURCES)
 clean:
 	rm -f -- ${BINARY}
 	rm -f -- ${BINARY}.darwin.amd64 ${BINARY}.darwin.amd64.sha
+	rm -f -- ${BINARY}.darwin.arm64 ${BINARY}.darwin.arm64.sha
 	rm -f -- ${BINARY}.linux.amd64  ${BINARY}.linux.amd64.sha
 	rm -f -- ${BINARY}.linux.arm    ${BINARY}.linux.arm.sha
 
@@ -70,7 +75,7 @@ install:
 
 .PHONY: release
 release:
-	./$(DEFAULT_SYSTEM_BINARY) github-release "${VERSION}" lucli.darwin.amd64 lucli.linux.amd64 lucli.linux.arm -- --github-access-token ${GITHUB_API_KEY} --github-repository lmhd/lucli
+	./$(DEFAULT_SYSTEM_BINARY) github-release "${VERSION}" lucli.darwin.amd64 lucli.darwin.arm64 lucli.linux.amd64 lucli.linux.arm -- --github-access-token ${GITHUB_API_KEY} --github-repository lmhd/lucli
 
 # Really simple "does it at least run?" tests for now
 # Proper tests coming at some point
