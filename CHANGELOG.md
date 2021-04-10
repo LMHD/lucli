@@ -1,3 +1,7 @@
+## 0.18.0
+
+* M1 Support
+
 ## 0.17.1
 
 * Fix Keybase private dir
