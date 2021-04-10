@@ -41,7 +41,7 @@ endif
 
 
 .DEFAULT_GOAL: $(BINARY)
-$(BINARY): $(BINARY).darwin.amd64 $(BINARY).linux.amd64 $(BINARY).linux.arm
+$(BINARY): $(BINARY).darwin.amd64 $(BINARY).darwin.arm64 $(BINARY).linux.amd64 $(BINARY).linux.arm
 	cp $(DEFAULT_SYSTEM_BINARY) $@
 
 $(BINARY).darwin.amd64: $(SOURCES)

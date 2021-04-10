@@ -1,3 +1,7 @@
+## 0.18.1
+
+* Actually build the M1 binary
+
 ## 0.18.0
 
 * M1 Support
