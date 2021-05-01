@@ -49,7 +49,7 @@ $(BINARY).darwin.amd64: $(SOURCES)
 	${DEFAULT_SHASUM_UTIL} $@ > $@.sha
 
 $(BINARY).darwin.arm64: $(SOURCES)
-	${DOCKER_RUN_COMMAND} -e GOOS=darwin -e GOARCH=amd64 golang:${GO_VERSION} /bin/bash -c "go get -v && go build ${LDFLAGS} -o $@"
+	${DOCKER_RUN_COMMAND} -e GOOS=darwin -e GOARCH=arm64 golang:${GO_VERSION} /bin/bash -c "go get -v && go build ${LDFLAGS} -o $@"
 	${DEFAULT_SHASUM_UTIL} $@ > $@.sha
 
 $(BINARY).linux.amd64: $(SOURCES)

@@ -1,3 +1,7 @@
+## 0.18.2
+
+* No really, actually build the M1 version
+
 ## 0.18.1
 
 * Actually build the M1 binary
